@@ -34,10 +34,12 @@ namespace ApplicationLayer
             var searchHistory = new SearchHistory
             {
                 Query = command.Query,
-                Timestamp = command.Timestamp
+                Timestamp = command.Timestamp,
+                UserId = command.UserId
             };
 
-             _repositorygen.Add(searchHistory);
+            await _repositorygen.Add(searchHistory);
+            await _repositorygen.SaveChangesAsync();
             return true;
              
                 
